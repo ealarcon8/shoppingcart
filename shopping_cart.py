@@ -1,3 +1,5 @@
+
+
 products = [
     {
         "id":1, 
@@ -28,47 +30,55 @@ products = [
 
 
 def to_usd(my_price):
-    """
-    Converts a numeric value to usd-formatted string, for printing and display purposes.
+        """
+        Converts a numeric value to usd-formatted string, for printing and display purposes.
 
-    Param: my_price (int or float) like 4000.444444
+        Param: my_price (int or float) like 4000.444444
 
-    Example: to_usd(4000.444444)
+        Example: to_usd(4000.444444)
 
-    Returns: $4,000.44
-    """
-    return f"${my_price:,.2f}" #> $12,000.71
+        Returns: $4,000.44
+        """
+        return f"${my_price:,.2f}" #> $12,000.71
 
-# TODO: write some Python code here to produce the desired output
+if __name__ == "__main__":
 
-while True:
+    length = 0
+    u = 0
+    ids = []
+    i = 0
+    cart = []
+    cartP = []
+    x = 0
+    rudone = 0
+    u = input("Please enter product ID:\n")
+    length = len(products)  
+    while(i<length):
+        ids.append(str(products[i]["id"]))
+        i = i+1
+ 
+    while(rudone == 0):
+        while(x<length):
+            if u == ids[x]:
+                print(products[x]["name"])
+                print(to_usd(products[x]["price"]))
+                cart.append(products[x]["name"])
+                cartP.append(products[x]["price"])
+            x = x+1
+        
+        
 
-    # ASK  FOR USER INPUT
 
-    product_id = input("Please input a product identifier:")
-    print(product_id) #> "9"
-    print(type(product_id)) #> string
-    if product_id == "DONE":
-        break
 
-    # LOOK UP CORRESPONDING PRODUCTS
+    
 
-    # print product that has an id attribute equal to "9"
 
-    matching_products = []
 
-    for x in products:
-        #if x ==3:
-        #    ___.append(x)
-        #    print(x)
-        # print(x["id"])
-        if str(x["id"]) == str(product_id):
-            # this is a match
-            matching_products.append(x)
-
-    #print(matching_products)
-    #print(type(matching_products))
-    #print(len(matching_products))
-    #print the name of the matching product
-    matching_product = matching_products[0]
-    print(matching_product["name"], matching_product["price"])
+    # Store name of your choice
+# Store phone number and/or website URL and/or address of choice
+# Date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
+# Name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
+# Total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
+# Amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
+# Total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
+# Friendly message thanking the customer and/or encouraging the customer to shop again
