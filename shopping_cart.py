@@ -1,4 +1,5 @@
 
+from datetime import datetime
 
 products = [
     {
@@ -28,6 +29,7 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
+TAX = 0.0875
 
 def to_usd(my_price):
         """
@@ -51,12 +53,18 @@ if __name__ == "__main__":
     cartP = []
     x = 0
     rudone = 0
+    y = 0
+    subtotal = 0
+    total = 0
+    z = 0
+
     u = input("Please enter product ID:\n")
     length = len(products)  
     while(i<length):
         ids.append(str(products[i]["id"]))
         i = i+1
  
+# when rudone is 0, loop will continue. When rudone is 1, loop will stop 
     while(rudone == 0):
         while(x<length):
             if u == ids[x]:
@@ -65,8 +73,36 @@ if __name__ == "__main__":
                 cart.append(products[x]["name"])
                 cartP.append(products[x]["price"])
             x = x+1
-        
-        
+        x = 0
+        u = input("Please enter product ID:\n")
+        if (u == "done" or u == "DONE" or u == "Done"):
+            rudone = 1
+    
+    while (y<len(cartP)):
+        subtotal = subtotal + cartP[y]
+        y=y+1
+    
+    total = subtotal*(1+TAX)
+
+    datentime = datetime.now().strftime("%d/%m/%Y %H:%M:%S")   
+    print("\n\n--------------------------------")
+    print("Elizabeth's Grocery Store")
+    print("--------------------------------")
+    print("999-999-0090 | elizabethgrocery.com\n--------------------------------", 
+        "\nCheckout at", datentime,"\n--------------------------------\n")   
+    print("Items:\n")
+
+    while (z<len(cart)):
+        print("- " + cart[z]+ " ... " + to_usd(cartP[z])+"\n")
+        z=z+1
+    
+    print("Cart Total: " + to_usd(subtotal))
+    print("Tax: " + to_usd(total-subtotal))
+    print("--------------------------------")
+    print("Total: " + to_usd(total))
+    print("--------------------------------")
+
+
 
 
 
