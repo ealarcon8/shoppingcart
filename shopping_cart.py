@@ -1,5 +1,8 @@
 
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+
 
 products = [
     {
@@ -29,7 +32,7 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-TAX = 0.0875
+TAX = os.environ.get("TAX", default = 0.0875)
 
 def to_usd(my_price):
         """
@@ -96,25 +99,10 @@ if __name__ == "__main__":
         print("- " + cart[z]+ " ... " + to_usd(cartP[z])+"\n")
         z=z+1
     
-    print("Cart Total: " + to_usd(subtotal))
-    print("Tax: " + to_usd(total-subtotal))
     print("--------------------------------")
-    print("Total: " + to_usd(total))
+    print("Subotal: " + to_usd(subtotal))
+    print("Sales Tax: " + to_usd(total-subtotal))
+    print("Checkout Total: " + to_usd(total))
     print("--------------------------------")
-
-
-
-
-
-    
-
-
-
-    # Store name of your choice
-# Store phone number and/or website URL and/or address of choice
-# Date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
-# Name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
-# Total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
-# Amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
-# Total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
-# Friendly message thanking the customer and/or encouraging the customer to shop again
+    print("THANK YOU FOR SHOPPING WITH US, PLEASE COME AGAIN")
+    print("--------------------------------")
