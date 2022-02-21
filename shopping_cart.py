@@ -1,7 +1,7 @@
 
 from datetime import datetime
-import os
-from dotenv import load_dotenv
+#import os
+#from dotenv import load_dotenv
 
 
 products = [
@@ -32,7 +32,7 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-TAX = os.environ.get("TAX", default = 0.0875)
+TAX = 0.0875
 
 def to_usd(my_price):
         """
@@ -104,5 +104,5 @@ if __name__ == "__main__":
     print("Sales Tax: " + to_usd(total-subtotal))
     print("Checkout Total: " + to_usd(total))
     print("--------------------------------")
-    print("THANK YOU FOR SHOPPING WITH US, PLEASE COME AGAIN")
+    print("THANK YOU FOR SHOPPING WITH US, PLEASE COME AGAIN!")
     print("--------------------------------")
