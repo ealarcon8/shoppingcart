@@ -1,7 +1,7 @@
 
 from datetime import datetime
-#import os
-#from dotenv import load_dotenv
+import os
+from dotenv import load_dotenv
 
 
 products = [
@@ -32,7 +32,7 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-TAX = 0.0875
+tax_rate = float(os.getenv("TAX_RATE", default=0.0875))
 
 def to_usd(my_price):
         """
@@ -85,7 +85,7 @@ if __name__ == "__main__":
         subtotal = subtotal + cartP[y]
         y=y+1
     
-    total = subtotal*(1+TAX)
+    total = subtotal*(1+tax_rate)
 
     datentime = datetime.now().strftime("%d/%m/%Y %H:%M:%S")   
     print("\n\n--------------------------------")
